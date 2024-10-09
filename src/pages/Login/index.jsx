@@ -4,7 +4,7 @@ import { Header } from "../../components/Header";
 import { Button } from '../../components/Button';
 import {MdEmail, MdLock} from 'react-icons/md'
 import { useNavigate } from 'react-router-dom';
-import { useForm, SubmitHandler } from "react-hook-form"
+import { useForm} from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
 import { api } from '../../services/api';
