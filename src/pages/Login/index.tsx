@@ -3,12 +3,11 @@ import { Input } from '../../components/Input';
 import { Header } from "../../components/Header";
 import { Button } from '../../components/Button';
 import {MdEmail, MdLock} from 'react-icons/md'
-import { useNavigate } from 'react-router-dom';
 import { useForm} from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import { api } from '../../services/api';
 import { IFormData } from './types';
+import { useAuth } from '../../Hooks/useAuth';
 
 const schema = yup
 .object({
@@ -18,7 +17,8 @@ const schema = yup
 
 const Login = () => {
 
-    const navigate = useNavigate();
+    const {handleLogin} = useAuth();
+
     const {
             control,
             handleSubmit,
@@ -29,17 +29,7 @@ const Login = () => {
         });
 
         const onSubmit = async (formData: IFormData) => {
-            try {
-                const { data } = await api.get(`users?email=${formData.email}&senha=${formData.password}`);
-                if(data.length === 1){
-                    navigate('/feed')
-                } else {
-                    alert('Email ou senha invalido')
-                }
-            } catch {
-                alert('Houver um erro, tente novamente')
-                
-            }
+            handleLogin(formData);
         };
 
     return(<>

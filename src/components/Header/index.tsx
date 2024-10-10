@@ -11,15 +11,22 @@ import {
     UserPicture,
     Wrapper
 } from './styles';
-import { IHeader } from './types';
 
-const Header = ({autenticado}: IHeader) => {
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../Hooks/useAuth';
+
+
+const Header = () => {
+
+    const {user} = useAuth();
     return (
     <Wrapper>
         <Container>
             <Row>
+                <Link to="/">
                 <img src={logo} alt="Logo da DIO"/>
-                {autenticado ? (<>
+                </Link>
+                {user.id ? (<>
                     <BuscarInputContainer>
                     <Input placeholder='Buscar...'/>
                     </BuscarInputContainer>
@@ -29,7 +36,7 @@ const Header = ({autenticado}: IHeader) => {
                 ): null}
             </Row>
             <Row>
-                {autenticado ? (
+                {user.id ? (
                     <UserPicture src="https://avatars.githubusercontent.com/u/45184516?v=4" />
                 ): (
                     <>

@@ -1,6 +1,6 @@
 {
     "users": [
-        {"id": 1, "name": "Pablo", "email": "pablo@email.com", "senha":"12345678" },
-        {"id": 2, "name": "Jose", "email": "jose@email.com", "senha":"12345678" }
+        {"id": 1, "name": "Pablo", "email": "pablo@email.com", "password":"12345678" },
+        {"id": 2, "name": "Jose", "email": "jose@email.com", "password":"12345678" }
 ]
 }
